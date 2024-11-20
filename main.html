@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asymmetric File Encryptor/Decryptor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Asymmetric File Encryptor/Decryptor</h1>
+        
+        <div class="form-group">
+            <label class="label" for="fileInput">Select File</label>
+            <input 
+                type="file" 
+                id="fileInput"
+                class="file-input"
+            >
+        </div>
+
+        <div class="key-management">
+            <div class="form-group">
+                <label class="label">Key Management</label>
+                <div class="button-container">
+                    <button onclick="generateKeyPair()" class="button button-outline">
+                        🔑 Generate Key Pair
+                    </button>
+                    <button onclick="downloadKeys()" class="button button-outline">
+                        💾 Download Keys
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="publicKeyInput">Public Key (for encryption)</label>
+                <div class="input-container">
+                    <input 
+                        type="file" 
+                        id="publicKeyInput"
+                        class="file-input"
+                        accept=".pub"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="privateKeyInput">Private Key (for decryption)</label>
+                <div class="input-container">
+                    <input 
+                        type="file" 
+                        id="privateKeyInput"
+                        class="file-input"
+                        accept=".priv"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button 
+                onclick="encryptFile()"
+                class="button button-primary"
+            >
+                🔒 Encrypt
+            </button>
+            <button 
+                onclick="decryptFile()"
+                class="button button-secondary"
+            >
+                🔓 Decrypt
+            </button>
+        </div>
+
+        <div id="progress-container" class="progress-container">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script src="crypto-utils.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
